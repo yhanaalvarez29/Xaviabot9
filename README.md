@@ -1,2 +1,2 @@
-# WARNING 
-THIS IS NOT MY OWN FILE, I MODIFIED AND FIXED LOGIN ONLY, THIS IS 2.1.1 VERSION OF XAVIABOT BUT I CHANGED THE MAX LIMIT IN USER.JS I USED THE LATEST VER FOR NO WARNING UPDATE.
+# WARNING  
+This is not my own file. I only modified and fixed the login. This is version 2.1.1 of XaviaBot, but I changed the max limit in user.js. I used the latest version to avoid update warnings.
