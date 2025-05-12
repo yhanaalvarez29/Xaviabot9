@@ -4,9 +4,6 @@
   "description": "A Facebook Messenger Bot",
   "main": "index.js",
   "type": "module",
-  "engines": {
-    "node": ">=16"
-  },
   "scripts": {
     "start": "node index.js",
     "startDev": "node --trace-warnings --experimental-import-meta-resolve --expose-gc core/_build.js"
