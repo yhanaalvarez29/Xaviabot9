@@ -5,8 +5,9 @@ const config = {
     aliases: ["ss"],
     version: '1.0',
     permissions: [2],
-    credits: '@jm',
+    credits: 'emil',
     description: 'take screenshot of url',
+    commandCategory: 'utility',
     usages: '[url]',
     cooldown: 5
 };
@@ -27,7 +28,7 @@ async function onCall({ message, args, getLang }) {
     if (!url) return message.reply(getLang("noUrl"));
 
     try {
-        const api = `https://rapido.up.railway.app/api/screenshot?url=${encodeURIComponent(url)}`;
+        const api = `https://rapido.zetsu.xyz/api/screenshot?url=${encodeURIComponent(url)}`;
         const res = await axios.get(api, { responseType: 'stream' });
         
         message.reply({

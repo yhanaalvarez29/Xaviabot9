@@ -38,7 +38,7 @@ async function onCall({ message, getLang }) {
     
     try {
         const imageUrl = message.messageReply.attachments[0].url;
-        const apiUrl = `https://rapido.up.railway.app/api/imgur?image=${encodeURIComponent(imageUrl)}`;
+        const apiUrl = `https://rapido.zetsu.xyz/api/imgur?image=${encodeURIComponent(imageUrl)}`;
         
         const response = await axios.get(apiUrl);
         

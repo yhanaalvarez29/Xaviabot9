@@ -8,11 +8,11 @@ const __dirname = path.dirname(__filename);
 const cachePath = path.resolve(__dirname, '../cache');
 
 const config = {
-    name: "flux",
+    name: "stability",
     version: "1.0.0",
     permissions: 0,
-    credits: "chill, api ko lang",
-    description: "Generate an image with a prompt using rapido's API",
+    credits: "@jm",
+    description: "gen an image with a prompt using stability diffusion.",
     usage: "[prompt]",
     cooldown: 3,
     category: "Images",
@@ -22,14 +22,14 @@ async function onCall({ message, args, data }) {
     const prefix = data?.thread?.data?.prefix || global.config.PREFIX; // Get the prefix from thread data or global config
 
     if (args.length === 0) {
-        return message.reply(`Please provide a prompt for the image generation.\n\nExample: ${prefix}flux cat`);
+        return message.reply(`Usage: ${prefix}stability ${config.usage}`);
     }
 
     const prompt = args.join(" ");
     message.reply("Generating image...");
 
     try {
-        const response = await axios.get(`https://rapido.zetsu.xyz/api/flux?prompt=${encodeURIComponent(prompt)}`, {
+        const response = await axios.get(`https://rapido.zetsu.xyz/api/sd?prompt=${encodeURIComponent(prompt)}`, {
             responseType: 'arraybuffer'
         });
 

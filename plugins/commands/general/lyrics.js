@@ -4,24 +4,21 @@ const config = {
   name: "lyrics",
   aliases: ["ly"],
   description: "Get song lyrics",
-  usage: "artist | song name",
+  usage: "song name",
   cooldown: 3,
   permissions: [0],
-  credits: "api by jm"
+  credits: "rapido"
 };
 
 async function onCall({ message, args }) {
-  const query = args.join(" ");
-  if (!query.includes("|")) return message.reply("Usage: artist | song name");
-  
-  const [artist, song] = query.split("|").map(s => s.trim());
-  if (!artist || !song) return message.reply("Invalid format. Use: artist | song name");
+  const song = args.join(" ");
+  if (!song) return message.reply("Please enter a song name");
 
   try {
-    const { data } = await axios.get(`https://rapido.up.railway.app/api/lyrics?artist=${encodeURIComponent(artist)}&song=${encodeURIComponent(song)}`);
+    const { data } = await axios.get(`https://rapido.zetsu.xyz/api/ly?q=${encodeURIComponent(song)}`);
     message.reply(`${data.lyrics || "Lyrics not found"}`);
-  } catch {
-    message.reply("Error fetching lyrics");
+  } catch (error) {
+    message.reply(error.message);
   }
 }
 

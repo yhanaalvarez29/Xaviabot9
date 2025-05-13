@@ -3,9 +3,7 @@ import fs from 'fs';
 import path from 'path';
 
 const config = {
-    name: "shoti",
-    aliases: ["sh"],
-    credits: "@jm"
+    name: "eabab"
 }
 
 async function onCall({ message }) {

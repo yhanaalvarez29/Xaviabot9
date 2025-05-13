@@ -125,7 +125,7 @@ async function onCall({ message, args, getLang }) {
         const videos = await searchVideos(input);
         if (!videos.length) return message.reply(getLang("video.noResult"));
         
-        const thumbnails = await Promise.all(videos.slice(0, 6).map(v => downloadThumbnail(v.imgSrc)));
+        const thumbnails = await Promise.all(videos.slice(0, 10).map(v => downloadThumbnail(v.imgSrc)));
         const formattedList = videos.slice(0, 6).map((v, i) => `${i+1}. ${v.title} (${v.duration})`).join("\n\n");
         
         const sendData = await message.reply({
@@ -139,7 +139,7 @@ async function onCall({ message, args, getLang }) {
         
         return sendData.addReplyEvent({
             callback: chooseVideo,
-            videos: videos.slice(0, 6).map(v => ({title: v.title, url: v.url}))
+            videos: videos.slice(0, 10).map(v => ({title: v.title, url: v.url}))
         });
     } catch (err) {
         console.error(err);

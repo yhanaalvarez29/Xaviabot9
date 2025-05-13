@@ -1,27 +1,37 @@
 import axios from "axios";
 
 const config = {
-  name: "apitest",
-  aliases: ["testapi", "api"],
-  description: "Test API endpoints with GET method",
-  usage: "[API_URL]",
+  name: "apipost",
+  aliases: ["testpost", "postapi"],
+  description: "Test API endpoints with POST method",
+  usage: "[API_URL] | [payload] | [headers]",
   cooldown: 5,
-  permissions: [0],
-  credits: "@jm",
+  permissions: [2],
+  credits: ".",
 };
 
 async function onCall({ message, args }) {
-  const apiUrl = args[0];
+  const input = args.join(" ");
+  const [apiUrl, payloadString, headersString] = input.split("|").map(item => item.trim());
 
-  if (!apiUrl) {
-    return message.reply("Please provide an API URL");
+  if (!apiUrl) return message.reply("Please provide an API URL");
+
+  let payload = {};
+  let headers = {};
+
+  try {
+    if (payloadString) payload = JSON.parse(payloadString);
+    if (headersString) headers = JSON.parse(headersString);
+  } catch (e) {
+    return message.reply("Invalid JSON format in payload or headers");
   }
 
   try {
-    const response = await axios.get(apiUrl, { 
+    const response = await axios.post(apiUrl, payload, {
       responseType: 'stream',
       headers: {
-        'Accept': '*/*'
+        'Accept': '*/*',
+        ...headers
       }
     });
 

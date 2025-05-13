@@ -4,26 +4,17 @@ const config = {
     name: 'gemini',
     version: '1.0',
     permissions: 0,
-    credits: '@jm',
+    credits: 'rapido',
     description: 'gemini ai with image support',
+    commandCategory: 'ai',
     usages: '[text] (reply to image)',
     cooldown: 5
 };
 
-const lang = {
-    "en_US": {
-        "noQuery": "provide text",
-        "error": "error"
-    },
-    "vi_VN": {
-        "noQuery": "nhập văn bản",
-        "error": "lỗi"
-    }
-};
 
 async function onCall({ message, args, getLang }) {
     const text = args.join(' ');
-    if (!text) return message.reply(getLang("noQuery"));
+    if (!text) return message.reply("No question provided.");
 
     try {
         let imageUrl;
@@ -31,17 +22,16 @@ async function onCall({ message, args, getLang }) {
             imageUrl = message.messageReply.attachments[0].url;
         }
 
-        const api = `https://rapido-api.vercel.app/api/gemini?chat=${encodeURIComponent(text)}${imageUrl ? `&imageUrl=${encodeURIComponent(imageUrl)}` : ''}`;
+        const api = `https://rapido.zetsu.xyz/api/gemini?chat=${encodeURIComponent(text)}&uid=${message.senderID}${imageUrl ? `&imageUrl=${encodeURIComponent(imageUrl)}` : ''}`;
         const res = await axios.get(api);
         
         message.reply(res.data.response);
-    } catch {
-        message.reply(getLang("error"));
+    } catch (e) {
+        message.reply(e);
     }
 }
 
 export default {
     config,
-    langData: lang,
     onCall
 };

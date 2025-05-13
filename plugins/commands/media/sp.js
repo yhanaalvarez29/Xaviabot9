@@ -7,7 +7,7 @@ const config = {
   usage: "[song name]",
   cooldown: 5,
   permissions: [0],
-  credits: "@jm"
+  credits: "."
 };
 
 async function onCall({ message, args }) {
@@ -15,17 +15,17 @@ async function onCall({ message, args }) {
   if (!query) return message.reply("Please provide a song name");
 
   try {
-    const search = await axios.get(`https://rapido.zetsu.xyz/api/sp?query=${encodeURIComponent(query)}`);
-    const track = search.data;
+    const searchResponse = await axios.get(`https://rapido.zetsu.xyz/api/sp?query=${encodeURIComponent(query)}`);
+    const track = searchResponse.data;
 
     if (!track || !track.url) return message.reply("Song not found");
 
-    const durl = `https://api-spotify-dlr.vercel.app/api?url=${encodeURIComponent(track.url)}`;
-    const dl = await axios.get(dlurl, { responseType: 'stream' });
+    const downloadUrl = `https://api-spotify-dlr.vercel.app/api?url=${encodeURIComponent(track.url)}`;
+    const downloadResponse = await axios.get(downloadUrl, { responseType: 'stream' });
 
     await message.reply({
       body: `${track.name}`,
-      attachment: dl.data
+      attachment: downloadResponse.data
     });
 
   } catch (error) {
