@@ -17,7 +17,7 @@ async function onCall({ message, args }) {
   const [question, answer] = input;
 
   try {
-    const { data } = await axios.get(`https://simsimi-api-pro.onrender.com/teach?ask=${encodeURIComponent(question)}&ans=${encodeURIComponent(answer)}`);
+    const { data } = await axios.get(`https://simsimi-api-pro.onrender.com/teach?ask=hi&ans=hello&apikey=d266081680db431ca84abbd67b709cdd076d32a7{encodeURIComponent(question)}&ans=${encodeURIComponent(answer)}`);
 
     if (data.teachResponse?.respond === "This answer already exists for the given question!") {
       return message.reply("⚠️ This answer already exists!");
