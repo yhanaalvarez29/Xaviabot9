@@ -55,19 +55,19 @@ const evolveNames = [
 ];
 
 const evolveImages = [
-  "https://i.imgur.com/8NH55vo.png",  //1
-  "https://i.imgur.com/NrwN5VD.png",  //2
-  "https://i.imgur.com/9c4Kb08.png",  //3
-  "https://i.imgur.com/5jAGUBf.png",  //4
-  "https://i.imgur.com/mnOz3kw.png",  //5 
-  "https://i.imgur.com/yKo35qa.png",  //6
-  "https://i.imgur.com/c7khomv.png",  //7
-  "https://i.imgur.com/nAmvvbX.png",  //8
-  "https://i.imgur.com/h158sBU.jpg",  //9
-  "https://i.imgur.com/8d0AG1h.jpg",  //10
-  "https://i.imgur.com/2VYxESv.png",  //11
-  "https://i.imgur.com/4CaSjJY.png",  //12
-  "https://i.imgur.com/K94uf1b.png",  //13
+  "https://i.imgur.com/KVkjdxJ.jpg",  //1
+  "https://i.imgur.com/KVkjdxJ.jpg",  //2
+  "https://i.imgur.com/KVkjdxJ.jpg",  //3
+  "https://i.imgur.com/KVkjdxJ.jpg",  //4
+  "https://i.imgur.com/KVkjdxJ.jpg",  //5 
+  "https://i.imgur.com/KVkjdxJ.jpg",  //6
+  "https://i.imgur.com/KVkjdxJ.jpg",  //7
+  "https://i.imgur.com/KVkjdxJ.jpg",  //8
+  "https://i.imgur.com/KVkjdxJ.jpg",  //9
+  "https://i.imgur.com/KVkjdxJ.jpg",  //10
+  "https://i.imgur.com/KVkjdxJ.jpg",  //11
+  "https://i.imgur.com/KVkjdxJ.jpg",  //12
+  "https://i.imgur.com/KVkjdxJ.jpg",  //13
   "https://i.imgur.com/uQpfZlJ.png",  //14
   "https://i.imgur.com/8cKYgIr.jpg",  //15
   "https://i.imgur.com/zZe03As.jpg",  //16
