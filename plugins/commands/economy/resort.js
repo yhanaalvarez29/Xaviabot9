@@ -8,7 +8,7 @@ const config = {
   description: "Manage your resort.",
   usage: "",
   cooldown: 5,
-  credits: "Dymyrius"
+  credits: "Dymyrius fixed by Duke Agustin"
 };
 
 const langData = {
@@ -23,36 +23,32 @@ const langData = {
 };
 
 const resortImages = [
-  "https://ibb.co/Q3v8GS7b",
-  "https://ibb.co/Q3v8GS7b",
-  "https://ibb.co/Q3v8GS7b",
-  "https://ibb.co/Q3v8GS7b",
-  "https://ibb.co/Q3v8GS7b",
-  "https://ibb.co/Q3v8GS7b",
-  "https://ibb.co/Q3v8GS7b",
-  "https://ibb.co/Q3v8GS7b",
-  "https://ibb.co/Q3v8GS7b",
-  "https://ibb.co/Q3v8GS7b",
-  "https://ibb.co/Q3v8GS7b",
-  "https://ibb.co/Q3v8GS7b",
-  "https://ibb.co/Q3v8GS7b",
-  "https://ibb.co/Q3v8GS7b",
-  "https://ibb.co/Q3v8GS7b",
-  "https://ibb.co/Q3v8GS7b",
-  "https://ibb.co/Q3v8GS7b",
-  "https://ibb.co/Q3v8GS7b",
-  "https://ibb.co/Q3v8GS7b",
-  "https://ibb.co/Q3v8GS7b",
-  "https://ibb.co/Q3v8GS7b",
-  "https://ibb.co/Q3v8GS7b",
-  "https://ibb.co/Q3v8GS7b",
-  "https://ibb.co/Q3v8GS7b"
+  "https://i.ibb.co/Q3MqjdqR/SOA08ZY.png",
+  "https://i.ibb.co/9mVBCt4y/TJjSR0b.jpg",
+  "https://i.ibb.co/v44cSF74/2rbIdig.jpg",
+  "https://i.ibb.co/B5DVY3mQ/B4LfB3N.png",
+  "https://i.ibb.co/YBYwzwq6/rAp1ht1.png",
+  "https://i.ibb.co/xKykxz9C/m0U81MX.jpg",
+  "https://i.ibb.co/5X29Tjss/cAYBO5u.jpg",
+  "https://i.ibb.co/FkzYzQ9H/TlA5ses.jpg",
+  "https://i.ibb.co/JWv2V9f1/hHIw2Ay.jpg",
+  "https://i.ibb.co/bMbYcWFx/Sgj79Gi.jpg",
+  "https://i.ibb.co/cKVgFJVc/ZoldXIQ.png",
+  "https://i.ibb.co/C5ddvnBr/CZD4GrY.jpg",
+  "https://i.ibb.co/W437NmF6/kJciB1v.jpg",
+  "https://i.ibb.co/x0dWcnY/8dbenRw.png",
+"https://i.ibb.co/3yw6yXgQ/OHpHq2I.png",
+"https://i.ibb.co/3yw6yXgQ/OHpHq2I.png",
+"https://i.ibb.co/3yw6yXgQ/OHpHq2I.png",
+"https://i.ibb.co/3yw6yXgQ/OHpHq2I.png",
+"https://i.ibb.co/3yw6yXgQ/OHpHq2I.png",
+"https://i.ibb.co/3yw6yXgQ/OHpHq2I.png",  
   // ... Add URLs for other levels
 ];
 
 const valueIncreaseInterval = 7 * 60 * 1000; // 7 minutes in milliseconds
 const cleanCooldownDuration = 2 * 60 * 60 * 1000; // 2 hours in milliseconds
-const maxResortLevel = 24; // Maximum level of the resort
+const maxResortLevel = 20; // Maximum level of the resort
 
 setInterval(() => {
   for (const [userID, userResort] of userResorts.entries()) {
@@ -122,7 +118,7 @@ loadUserData();
 
 async function onCall({ message, getLang, args }) {
   const { Users } = global.controllers;
-  const resortimage = (await axios.get("https://i.imgur.com/kKP3G5t.png", {
+  const resortimage = (await axios.get("https://i.ibb.co/QF7JkKgj/kKP3G5t.png", {
     responseType: "stream"
   })).data;
 
@@ -212,7 +208,7 @@ async function onCall({ message, getLang, args }) {
     const userResort = userResorts.get(senderID);
     const resortCleanliness = userResort.cleanliness; // Retrieve the actual cleanliness value
 
-    const resortStatusMessage = `🏨 𝗥𝗲𝘀𝗼𝗿𝘁 𝗡𝗮𝗺𝗲: ${userResort.name}\n⬆️ 𝗥𝗲𝘀𝗼𝗿𝘁 𝗟𝗲𝘃𝗲𝗹: ${userResort.level}\n🧹 𝗖𝗹𝗲𝗮𝗻𝗹𝗶𝗻𝗲𝘀𝘀: ${resortCleanliness}%\n📈 𝗜𝗻𝗰𝗼𝗺𝗲: ₱${userResort.value}`;
+    const resortStatusMessage = `🏨 𝗥𝗲𝘀𝗼𝗿𝘁 𝗡𝗮𝗺𝗲: ${userResort.name}\n⬆️ 𝗥𝗲𝘀𝗼𝗿𝘁 𝗟𝗲𝘃𝗲𝗹: ${userResort.level}\n🧹 𝗖𝗹𝗲𝗮𝗻𝗹𝗶𝗻𝗲𝘀𝘀: ${resortCleanliness}%\n📈 𝗜𝗻𝗰𝗼𝗺𝗲: $${userResort.value}`;
 
     if (userResort.imageURL) {
       const imageResponse = await axios.get(userResort.imageURL, {
@@ -282,7 +278,7 @@ async function onCall({ message, getLang, args }) {
 
     saveUserData();
 
-    const upgradeSuccessMessage = `𝙲𝚘𝚗𝚐𝚛𝚊𝚝𝚞𝚕𝚊𝚝𝚒𝚘𝚗𝚜! 𝚈𝚘𝚞𝚛 𝚛𝚎𝚜𝚘𝚛𝚝 𝚑𝚊𝚜 𝚋𝚎𝚎𝚗 𝚞𝚙𝚐𝚛𝚊𝚍𝚎𝚍 𝚝𝚘 𝚕𝚎𝚟𝚎𝚕 ${nextLevel}. 𝙸𝚝𝚜 𝚟𝚊𝚕𝚞𝚎 𝚑𝚊𝚜 𝚒𝚗𝚌𝚛𝚎𝚊𝚜𝚎𝚍 𝚝𝚘 ₱${nextValue}. 𝚃𝚑𝚎 𝚞𝚙𝚐𝚛𝚊𝚍𝚎 𝚌𝚘𝚜𝚝 𝚢𝚘𝚞 ₱${upgradePrice}. ⬆`;
+    const upgradeSuccessMessage = `𝙲𝚘𝚗𝚐𝚛𝚊𝚝𝚞𝚕𝚊𝚝𝚒𝚘𝚗𝚜! 𝚈𝚘𝚞𝚛 𝚛𝚎𝚜𝚘𝚛𝚝 𝚑𝚊𝚜 𝚋𝚎𝚎𝚗 𝚞𝚙𝚐𝚛𝚊𝚍𝚎𝚍 𝚝𝚘 𝚕𝚎𝚟𝚎𝚕 ${nextLevel}. 𝙸𝚝𝚜 𝚟𝚊𝚕𝚞𝚎 𝚑𝚊𝚜 𝚒𝚗𝚌𝚛𝚎𝚊𝚜𝚎𝚍 𝚝𝚘 $${nextValue}. 𝚃𝚑𝚎 𝚞𝚙𝚐𝚛𝚊𝚍𝚎 𝚌𝚘𝚜𝚝 𝚢𝚘𝚞 $${upgradePrice}. ⬆`;
 
     if (nextLevel === maxResortLevel) {
       return message.reply(upgradeSuccessMessage + "𝚈𝚘𝚞𝚛 𝚛𝚎𝚜𝚘𝚛𝚝 𝚒𝚜 𝚗𝚘𝚠 𝚊𝚝 𝚝𝚑𝚎 𝚖𝚊𝚡𝚒𝚖𝚞𝚖 𝚕𝚎𝚟𝚎𝚕!");
@@ -307,7 +303,7 @@ async function onCall({ message, getLang, args }) {
     userResort.value = 0; // Reset the collected value
     saveUserData();
 
-    const collectMessage = `𝚈𝚘𝚞'𝚟𝚎 𝚌𝚘𝚕𝚕𝚎𝚌𝚝𝚎𝚍 ₱${collectedAmount} 𝚟𝚊𝚕𝚞𝚎 𝚏𝚛𝚘𝚖 𝚢𝚘𝚞𝚛 𝚛𝚎𝚜𝚘𝚛𝚝! 💰`; // Using collectedAmount as a number
+    const collectMessage = `𝚈𝚘𝚞'𝚟𝚎 𝚌𝚘𝚕𝚕𝚎𝚌𝚝𝚎𝚍 $${collectedAmount} 𝚟𝚊𝚕𝚞𝚎 𝚏𝚛𝚘𝚖 𝚢𝚘𝚞𝚛 𝚛𝚎𝚜𝚘𝚛𝚝! 💰`; // Using collectedAmount as a number
     return message.reply(collectMessage);
   }
 
